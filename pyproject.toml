@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "银行客户流失预测 - 基于决策树、SVM 和神经网络的分类分析"
 readme = "README.md"
 authors = [
-    { name = "bacxper", email = "153987109+bacxper@users.noreply.github.com" }
+    { name = "back3back", email = "242313714+back3back@users.noreply.github.com" }
 ]
 requires-python = ">=3.10"
 dependencies = [

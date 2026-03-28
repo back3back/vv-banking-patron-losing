@@ -102,11 +102,11 @@ preprocessor = BankDataPreprocessor.load("./dataset/preprocessor.pkl")
 
 ## 模型性能对比
 
-| 模型 | 准确率 | 特点 | 预处理要求 |
-|------|--------|------|-----------|
-| 决策树 | ~74% | 无需标准化，可解释性强 | 可选离散化 |
-| SVM | ~74% | 需要标准化，使用 `class_weight='balanced'` | 必须标准化 |
-| 神经网络 | ~73% | 需要标准化，使用 `early_stopping` | 必须标准化 |
+| 模型     | 准确率 | 特点                                         | 预处理要求 |
+| -------- | ------ | -------------------------------------------- | ---------- |
+| 决策树   | ~74%   | 无需标准化，可解释性强                       | 可选离散化 |
+| SVM      | ~74%   | 需要标准化，使用 `class_weight='balanced'` | 必须标准化 |
+| 神经网络 | ~73%   | 需要标准化，使用 `early_stopping`          | 必须标准化 |
 
 > 注：准确率基于平衡后的测试集（约 815 个样本，正负样本各约 400 个）
 
@@ -124,6 +124,7 @@ preprocessor = BankDataPreprocessor.load("./dataset/preprocessor.pkl")
 ### 自动分位数 vs 硬编码
 
 旧版本使用硬编码的阈值（如 584, 718, 48000 等），新版本使用自动分位数：
+
 - Q1 (33% 分位点)
 - Q2 (66% 分位点)
 
@@ -149,29 +150,29 @@ preprocessor = BankDataPreprocessor.load("./dataset/preprocessor.pkl")
 
 ### 预处理
 
-| 函数/类 | 说明 |
-|---------|------|
-| `create_train_test_data()` | 一站式完成数据加载、预处理、划分 |
-| `BankDataPreprocessor` | 预处理器类，支持 fit/transform 模式 |
-| `load_data()` | 加载原始数据 |
-| `split_from_dataframe()` | 从 DataFrame 直接划分数据集 |
+| 函数/类                      | 说明                                |
+| ---------------------------- | ----------------------------------- |
+| `create_train_test_data()` | 一站式完成数据加载、预处理、划分    |
+| `BankDataPreprocessor`     | 预处理器类，支持 fit/transform 模式 |
+| `load_data()`              | 加载原始数据                        |
+| `split_from_dataframe()`   | 从 DataFrame 直接划分数据集         |
 
 ### 训练
 
-| 函数 | 说明 |
-|------|------|
-| `train_decision_tree()` | 训练决策树（无需标准化） |
-| `train_svm()` | 训练 SVM（自动标准化） |
+| 函数                       | 说明                       |
+| -------------------------- | -------------------------- |
+| `train_decision_tree()`  | 训练决策树（无需标准化）   |
+| `train_svm()`            | 训练 SVM（自动标准化）     |
 | `train_neural_network()` | 训练神经网络（自动标准化） |
 
 ### 分析
 
-| 函数 | 说明 |
-|------|------|
-| `draw_roc_curve()` | 绘制 ROC 曲线 |
-| `draw_confusion_matrix()` | 绘制混淆矩阵 |
-| `fold_cross_validation()` | K 折交叉验证 |
+| 函数                        | 说明          |
+| --------------------------- | ------------- |
+| `draw_roc_curve()`        | 绘制 ROC 曲线 |
+| `draw_confusion_matrix()` | 绘制混淆矩阵  |
+| `fold_cross_validation()` | K 折交叉验证  |
 
 ## 作者
 
-- bacxper
+- back3back
