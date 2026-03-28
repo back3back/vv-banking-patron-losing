@@ -1,0 +1,24 @@
+[project]
+name = "bank-patron-losing"
+version = "0.1.0"
+description = "银行客户流失预测 - 基于决策树、SVM 和神经网络的分类分析"
+readme = "README.md"
+authors = [
+    { name = "bacxper", email = "153987109+bacxper@users.noreply.github.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "joblib>=1.5.3",
+    "jupyterlab>=4.5.6",
+    "matplotlib>=3.10.8",
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+]
+
+[project.scripts]
+bank-patron-losing = "bank_patron_losing:main"
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
