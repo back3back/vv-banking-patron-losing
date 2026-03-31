@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5CB85C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#449D44;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F0AD4E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC971F;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">银行客户流失预测 - 实验流程图</text>
+
+  <!-- Data Source -->
+  <g filter="url(#shadow)">
+    <rect x="450" y="60" width="300" height="60" rx="8" fill="url(#grad1)" stroke="#2E6DA4" stroke-width="2"/>
+    <text x="600" y="85" text-anchor="middle" font-size="16" fill="white" font-weight="bold">原始数据 CSV</text>
+    <text x="600" y="108" text-anchor="middle" font-size="14" fill="white">10,000 条客户记录</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="600" y1="120" x2="600" y2="155" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Data Preprocessing -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="160" width="500" height="100" rx="8" fill="url(#grad2)" stroke="#398439" stroke-width="2"/>
+    <text x="600" y="190" text-anchor="middle" font-size="16" fill="white" font-weight="bold">数据预处理模块</text>
+    <text x="600" y="218" text-anchor="middle" font-size="13" fill="white">删除无关列 | 类别编码 | 特征标准化/离散化 | 类别平衡</text>
+    <text x="600" y="242" text-anchor="middle" font-size="12" fill="#e0e0e0">BankDataPreprocessor.fit_transform()</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="600" y1="260" x2="600" y2="295" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Data Split -->
+  <g filter="url(#shadow)">
+    <rect x="380" y="300" width="440" height="70" rx="8" fill="url(#grad3)" stroke="#D58512" stroke-width="2"/>
+    <text x="600" y="328" text-anchor="middle" font-size="16" fill="white" font-weight="bold">数据集划分 (80% 训练 / 20% 测试)</text>
+    <text x="600" y="355" text-anchor="middle" font-size="13" fill="white">分层抽样 (stratify=y)</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <line x1="600" y1="370" x2="600" y2="405" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Model Training Branch -->
+  <line x1="600" y1="405" x2="600" y2="430" stroke="#333" stroke-width="2"/>
+  <line x1="600" y1="430" x2="300" y2="430" stroke="#333" stroke-width="2"/>
+  <line x1="600" y1="430" x2="900" y2="430" stroke="#333" stroke-width="2"/>
+
+  <!-- Decision Tree -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="440" width="200" height="90" rx="8" fill="#27AE60" stroke="#1E8449" stroke-width="2"/>
+    <text x="200" y="468" text-anchor="middle" font-size="15" fill="white" font-weight="bold">决策树</text>
+    <text x="200" y="490" text-anchor="middle" font-size="12" fill="#e0e0e0">Gini, max_depth=6</text>
+    <text x="200" y="512" text-anchor="middle" font-size="12" fill="#e0e0e0">min_samples=200</text>
+  </g>
+
+  <!-- SVM -->
+  <g filter="url(#shadow)">
+    <rect x="500" y="440" width="200" height="90" rx="8" fill="#2980B9" stroke="#1A5276" stroke-width="2"/>
+    <text x="600" y="468" text-anchor="middle" font-size="15" fill="white" font-weight="bold">SVM</text>
+    <text x="600" y="490" text-anchor="middle" font-size="12" fill="#e0e0e0">RBF 核函数</text>
+    <text x="600" y="512" text-anchor="middle" font-size="12" fill="#e0e0e0">class_weight=balanced</text>
+  </g>
+
+  <!-- MLP -->
+  <g filter="url(#shadow)">
+    <rect x="900" y="440" width="200" height="90" rx="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+    <text x="1000" y="468" text-anchor="middle" font-size="15" fill="white" font-weight="bold">神经网络 (MLP)</text>
+    <text x="1000" y="490" text-anchor="middle" font-size="12" fill="#e0e0e0">(10,11) 隐含层</text>
+    <text x="1000" y="512" text-anchor="middle" font-size="12" fill="#e0e0e0">early_stopping</text>
+  </g>
+
+  <!-- Arrows to Evaluation -->
+  <line x1="200" y1="530" x2="200" y2="570" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="600" y1="530" x2="600" y2="570" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="1000" y1="530" x2="1000" y2="570" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Merge Line -->
+  <line x1="200" y1="570" x2="1000" y2="570" stroke="#333" stroke-width="2"/>
+  <line x1="600" y1="570" x2="600" y2="605" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Model Evaluation -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="610" width="500" height="100" rx="8" fill="#8E44AD" stroke="#6C3483" stroke-width="2"/>
+    <text x="600" y="640" text-anchor="middle" font-size="16" fill="white" font-weight="bold">模型评价与分析</text>
+    <text x="600" y="668" text-anchor="middle" font-size="13" fill="white">准确率 | ROC 曲线 | 混淆矩阵 | 10 折交叉验证</text>
+    <text x="600" y="692" text-anchor="middle" font-size="12" fill="#e0e0e0">draw_roc_curve(), draw_confusion_matrix(), fold_cross_validation()</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <line x1="600" y1="710" x2="600" y2="745" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Final Results -->
+  <g filter="url(#shadow)">
+    <rect x="400" y="750" width="400" height="80" rx="8" fill="url(#grad1)" stroke="#2E6DA4" stroke-width="2"/>
+    <text x="600" y="778" text-anchor="middle" font-size="16" fill="white" font-weight="bold">最终结果</text>
+    <text x="600" y="805" text-anchor="middle" font-size="14" fill="white">决策树 74.48% | SVM 73.74% | MLP 72.76%</text>
+  </g>
+
+  <!-- Legend -->
+  <g>
+    <rect x="920" y="610" width="260" height="130" rx="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+    <text x="1050" y="635" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">图例说明</text>
+
+    <rect x="940" y="650" width="20" height="20" rx="3" fill="#27AE60"/>
+    <text x="970" y="666" font-size="11" fill="#333">决策树 - 离散化特征</text>
+
+    <rect x="940" y="678" width="20" height="20" rx="3" fill="#2980B9"/>
+    <text x="970" y="694" font-size="11" fill="#333">SVM - 标准化特征</text>
+
+    <rect x="940" y="706" width="20" height="20" rx="3" fill="#E74C3C"/>
+    <text x="970" y="722" font-size="11" fill="#333">MLP - 标准化特征</text>
+
+    <line x1="940" y1="740" x2="960" y2="740" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="970" y="744" font-size="11" fill="#333">数据流向</text>
+  </g>
+</svg>
