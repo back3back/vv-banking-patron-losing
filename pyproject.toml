@@ -22,3 +22,8 @@ bank-patron-losing = "bank_patron_losing:main"
 [build-system]
 requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
+
+[tool.uv]
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true

@@ -13,9 +13,10 @@ wheels/
 .ipynb_checkpoints
 
 # dataset
-dataset/
+dataset/*
+!dataset/Churn-Modelling-0-original.csv
 
 # model
-model/
+model/*
 
 
