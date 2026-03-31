@@ -34,13 +34,16 @@ def encode_categorical(df):
 
     返回编码后的 DataFrame 和编码器映射关系
     """
-    df = df.copy()
+    df = df.copy() # 避免修改原始 DataFrame
     encoders = {}
 
     for col in CATEGORICAL_COLS:
-        unique_vals = df[col].unique()
+        unique_vals = df[col].unique() # 获取该列中所有不重复的值
+        # 创建映射字典
         mapping = {val: idx for idx, val in enumerate(unique_vals)}
+        # 使用pandas的map方法把当列的每一个文本值替换为mapping字典中对应的数字
         df[col] = df[col].map(mapping)
+        # 将当前列的映射规则保存到 encoders 字典中。
         encoders[col] = mapping
 
     return df, encoders

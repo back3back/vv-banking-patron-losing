@@ -29,7 +29,14 @@ bank-patron-losing/
 使用 [uv](https://github.com/astral-sh/uv) 安装依赖：
 
 ```bash
+# 1. 同步环境
 uv sync
+
+# 2. 注册内核
+uv run python -m ipykernel install --user --name="bank-patron-losing" --display-name "Python (银行客户流失分析)"
+
+# 3. 运行jupyter
+uv run jupyter lab
 ```
 
 ## 使用方法
